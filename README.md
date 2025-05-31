@@ -48,8 +48,13 @@ Step 2: Copy Public Key to Remote Host
 ```
 ssh-copy-id MBaranekTech@192.168.1.10
 ssh-copy-id MBaranekTech@192.168.1.11
-```  
-Step 3: Test Passwordless SSH
+```
+Step 3: Set Correct Permissions
+```
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+```
+Step 4: Test Passwordless SSH
 ```
 ssh MBaranekTech@192.168.1.10
 ssh MBaranekTech@192.168.1.11
