@@ -1,6 +1,13 @@
-# Ansible
-Ansible is an open-source automation tool that enables you to configure systems, deploy applications, and orchestrate IT infrastructure using simple, human-readable YAML playbooks. 
-It connects to remote machines over SSH and doesn’t require agents, making it lightweight and easy to manage.
+# 🚀 Ansible Automation
+
+![Ansible](https://img.shields.io/badge/automation-ansible-%23174F85)  
+Automate your infrastructure and deployments with Ansible playbooks.
+
+## 📖 What is Ansible?
+
+**Ansible** is an open-source automation tool that allows you to configure servers, deploy applications, and manage IT environments using simple, human-readable YAML files called **playbooks**. It’s agentless and connects via SSH, making it ideal for managing Linux and cloud infrastructure.
+
+---
 
 
 ![ansible_example](https://github.com/user-attachments/assets/ce25cb4b-e84b-4b88-9f6e-006e7c9c72e6)
@@ -18,4 +25,50 @@ Deploy apps (Node.js, Django, PHP, etc.) <br>
 Manage users, firewalls, cron jobs <br>
 Provision servers on AWS/GCP/Azure <br>
 
-![Ansible](https://img.shields.io/badge/automation-ansible-%23174F85)
+# 🛠 Requirements
+Python 3 <br>
+Ansible control node <br>
+SSH access to remote hosts <br>
+Sudo privileges on remote hosts <br>
+
+## 📁 Project Structure
+├── inventory.ini # Inventory of remote hosts <br>
+├── nginx.yml # Example playbook to install Nginx <br>
+└── README.md # This file <br>
+
+---
+## 📚	 Test host connectivity
+```
+ansible all -i inventory.ini -m ping
+```
+## 🚀 Example Playbook: Install Nginx
+
+```yaml
+- name: Install and start Nginx
+  hosts: client
+  become: true
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Start and enable Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
+```
+---
+
+## 📡 Inventory Example (inventory.ini)
+```
+[client]
+192.168.1.10 ansible_user=MBaranekTech ansible_ssh_private_key_file=~/.ssh/id_rsa
+192.168.1.11 ansible_user=MBaranekTech ansible_ssh_private_key_file=~/.ssh/id_rsa
+```
+## 🧪 How to Run a Playbook
+```
+ansible-playbook -i inventory.ini nginx-playbook.yml --ask-become-pass
+```
+
