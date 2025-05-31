@@ -35,7 +35,25 @@ Sudo privileges on remote hosts <br>
 ├── inventory.ini # Inventory of remote hosts <br>
 ├── nginx.yml # Example playbook to install Nginx <br>
 └── README.md # This file <br>
+---
+## 📌	 SSH KEYs
 
+Step 1: Generate SSH Key on Ansible node
+```
+ssh-keygen -t rsa -b 4096 
+Press Enter to accept defaults (save in ~/.ssh/id_rsa)
+```
+
+Step 2: Copy Public Key to Remote Host 
+```
+ssh-copy-id MBaranekTech@192.168.1.10
+ssh-copy-id MBaranekTech@192.168.1.11
+```  
+Step 3: Test Passwordless SSH
+```
+ssh MBaranekTech@192.168.1.10
+ssh MBaranekTech@192.168.1.11
+```
 ---
 ## 📚	 Test host connectivity
 ```
